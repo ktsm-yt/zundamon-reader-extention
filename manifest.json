@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Zundamon Reader",
+  "version": "1.0",
+  "description": "選択したテキストをVOICEVOXずんだもんで読み上げる",
+  "permissions": ["contextMenus"],
+  "host_permissions": ["http://localhost:50021/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "zundamon-read-selection": {
+      "suggested_key": {
+        "default": "Alt+Shift+Z"
+      },
+      "description": "選択中テキストをずんだもんで読み上げ"
+    }
+  }
+}
